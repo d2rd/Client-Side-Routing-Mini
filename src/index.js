@@ -4,38 +4,44 @@ import './index.css';
 // import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 // import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter as router } from 'react-router-dom'; // new
+import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom'; // new
 
-function App() {
+function About() {
   return (
     <div>
-      <h1>App Component</h1>
-      <p id="paragraph">This is the App Component</p>
-      </div>
-    );
+      <h1>About component</h1>
+      <p id="paragraph">This is the about component</p>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h1>Home component</h1>
+      <p id="paragraph">This is the home component</p>
+    </div>
+  );
 }
 
 // changed this
-
-
 ReactDOM.render(
-<App />, 
-<router>,
+<Router>
   <div>
     <ul>
       <li>
-        <link to="/">Home</link>
+        <NavLink to="/" activeClassName="navlink--active" exact>Home</NavLink>
       </li>
       <li>
-        <link to="/about">About</link>
+        <NavLink to="/about" activeClassName="navlink--active">About</NavLink>
       </li>
-      <li>
+      {/* <li>
         <link to="/products">Products</link>
-      </li>
+      </li> */}
     </ul>
-    <Route path='/' cmponent={Home} exact />
+    <Route path='/' component={Home} exact />
     <Route path="/about" component={About} />
-    <Route path="/products" component={Products} />
+    {/* <Route path="/products" component={Products} /> */}
   </div>
 </Router>,
 document.getElementById('root')
@@ -43,3 +49,4 @@ document.getElementById('root')
 // registerServiceWorker();
 //http://localhost:3000 /
 //http://localhost:3000 /about
+
